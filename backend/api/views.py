@@ -1,7 +1,15 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import RegisterSerializer
+
+from .serializers import RegisterSerializer, GenreSerializer
+from .models import Genre
+
+@api_view(['GET'])
+def genre_list(request):
+    genres = Genre.objects.all()
+    serializer = GenreSerializer(genres, many=True)
+    return Response(serializer.data)
 
 @api_view(['POST'])
 def register(request):
