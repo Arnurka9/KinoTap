@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>Edit Movie 🎬</h2>
+
+  <form #f="ngForm" (ngSubmit)="submit()" class="form">
+
+    <!-- TITLE -->
+    <div class="field">
+      <label>Title</label>
+      <input [(ngModel)]="movie.title" name="title" required #title="ngModel"/>
+
+      <div *ngIf="title.invalid && title.touched" class="error">
+        Title is required
+      </div>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="field">
+      <label>Description</label>
+      <textarea [(ngModel)]="movie.description" name="description" required #desc="ngModel"></textarea>
+
+      <div *ngIf="desc.invalid && desc.touched" class="error">
+        Description is required
+      </div>
+    </div>
+
+    <!-- RATING -->
+    <div class="field">
+      <label>Rating (0–10)</label>
+      <input 
+        type="number"
+        [(ngModel)]="movie.rating"
+        name="rating"
+        min="0"
+        max="10"
+        required
+        #rating="ngModel"
+      />
+
+      <div *ngIf="rating.invalid && rating.touched" class="error">
+        Rating must be between 0 and 10
+      </div>
+    </div>
+
+    <!-- GENRE -->
+    <div class="field">
+      <label>Genre</label>
+      <select [(ngModel)]="movie.genre" name="genre" required #genre="ngModel">
+        <option [ngValue]="null" disabled>Select genre</option>
+        <option *ngFor="let g of genres" [value]="g.id">
+          {{ g.name }}
+        </option>
+      </select>
+
+      <div *ngIf="genre.invalid && genre.touched" class="error">
+        Genre is required
+      </div>
+    </div>
+
+    <!-- BUTTON -->
+    <button [disabled]="f.invalid">Update Movie</button>
+
+  </form>
+</div>
