@@ -1,0 +1,81 @@
+<div class="container">
+  <h2>Add Movie 🎬</h2>
+
+  <form #f="ngForm" (ngSubmit)="submit()" class="form">
+
+    <!-- TITLE -->
+    <div class="field">
+      <label>Title</label>
+      <input
+        [(ngModel)]="movie.title"
+        name="title"
+        required
+        minlength="2"
+        #title="ngModel"
+        placeholder="Movie title"
+      />
+
+      <div class="error" *ngIf="title.invalid && title.touched">
+        <span *ngIf="title.errors?.['required']">Title is required</span>
+        <span *ngIf="title.errors?.['minlength']">Minimum 2 characters</span>
+      </div>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="field">
+      <label>Description</label>
+      <textarea
+        [(ngModel)]="movie.description"
+        name="description"
+        required
+        #desc="ngModel"
+        placeholder="Enter description"
+      ></textarea>
+
+      <div class="error" *ngIf="desc.invalid && desc.touched">
+        Description is required
+      </div>
+    </div>
+
+    <!-- RATING -->
+    <div class="field">
+      <label>Rating (0–10)</label>
+      <input
+        type="number"
+        [(ngModel)]="movie.rating"
+        name="rating"
+        min="0"
+        max="10"
+        required
+        #rating="ngModel"
+      />
+
+      <div class="error" *ngIf="rating.invalid && rating.touched">
+        Rating must be between 0 and 10
+      </div>
+    </div>
+
+    <!-- GENRE -->
+    <div class="field">
+  <label>Genre</label>
+
+  <select
+    [(ngModel)]="movie.genre"
+    name="genre"
+    required
+    #genre="ngModel"
+  >
+    <option [ngValue]="null" disabled>Select genre</option>
+
+    <option *ngFor="let g of genres" [value]="g.id">
+      {{ g.name }}
+    </option>
+  </select>
+
+</div>
+
+    <!-- BUTTON -->
+    <button [disabled]="f.invalid">Add Movie</button>
+
+  </form>
+</div>
