@@ -1,0 +1,58 @@
+<div class="container">
+  <h2>Register 👤</h2>
+
+  <form #f="ngForm" (ngSubmit)="submit()" class="form">
+
+    <!-- USERNAME -->
+    <div class="field">
+      <label>Username</label>
+      <input
+        [(ngModel)]="user.username"
+        name="username"
+        required
+        #username="ngModel"
+        placeholder="Enter username"
+      />
+      <div class="error" *ngIf="username.invalid && username.touched">
+        Username is required
+      </div>
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="field">
+      <label>Password</label>
+      <input
+        type="password"
+        [(ngModel)]="user.password"
+        name="password"
+        required
+        #password="ngModel"
+        placeholder="Enter password"
+      />
+      <div class="error" *ngIf="password.invalid && password.touched">
+        Password is required
+      </div>
+    </div>
+
+    <!-- CONFIRM PASSWORD -->
+    <div class="field">
+      <label>Confirm Password</label>
+      <input
+        type="password"
+        [(ngModel)]="user.password2"
+        name="password2"
+        required
+        #password2="ngModel"
+        placeholder="Repeat password"
+      />
+      <div class="error" *ngIf="password2.invalid && password2.touched">
+        Confirmation is required
+      </div>
+    </div>
+    
+
+    <!-- BUTTON -->
+    <button [disabled]="f.invalid">Register</button>
+
+  </form>
+</div>
