@@ -1,0 +1,41 @@
+.container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background: #111;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+  color: white;
+}
+
+h2 {
+  text-align: center;
+  color: #ff3b3b;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #000;
+  color: white;
+}
+
+button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(45deg, #ff0000, #990000);
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
