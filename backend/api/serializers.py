@@ -1,18 +1,14 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from .models import Collection, Favorite, Movie, Review
 
+User = get_user_model()
 
-class MovieMiniSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
-    title = serializers.CharField(read_only=True)
-    poster = serializers.URLField(read_only=True, allow_null=True)
-
-    def create(self, validated_data):
-        return validated_data
-
-    def update(self, instance, validated_data):
-        return instance
+class MovieMiniSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Movie
+        fields = ['id', 'title', 'poster']
+        read_only_fields = fields
 
 
 class MovieFilterSerializer(serializers.Serializer):
@@ -82,6 +78,7 @@ class FavoriteToggleResponseSerializer(serializers.Serializer):
 
 
 class MovieSerializer(serializers.ModelSerializer):
+    genre = serializers.CharField(source='genre.name', read_only=True)
     reviews_count = serializers.IntegerField(read_only=True)
     is_favorite = serializers.BooleanField(read_only=True)
 
@@ -154,16 +151,10 @@ class ReviewSerializer(serializers.ModelSerializer):
         )
 
 
-class FavoriteSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
+class FavoriteSerializer(serializers.ModelSerializer):
     movie = MovieMiniSerializer(read_only=True)
-    added_at = serializers.DateTimeField(read_only=True)
 
-    def create(self, validated_data):
-        return Favorite.objects.create(**validated_data)
-
-    def update(self, instance, validated_data):
-        instance.movie = validated_data.get('movie', instance.movie)
-        instance.user = validated_data.get('user', instance.user)
-        instance.save()
-        return instance
+    class Meta:
+        model = Favorite
+        fields = ['id', 'movie', 'added_at']
+        read_only_fields = fields

@@ -1,0 +1,45 @@
+<section class="favorites-shell">
+    <section class="favorites-hero">
+    <div>
+        <p class="eyebrow">Collections</p>
+        <h1>Мое избранное</h1>
+        <p>Список фильмов текущего пользователя с быстрым удалением прямо со страницы.</p>
+    </div>
+    <label class="search-field">
+        <span>Поиск в избранном</span>
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Введите название фильма" />
+    </label>
+    </section>
+
+    @if (errorMessage()) {
+    <section class="state-card error-card">{{ errorMessage() }}</section>
+    }
+
+    @if (isLoading()) {
+    <section class="state-card">Загрузка избранного...</section>
+    } @else {
+    <section class="favorites-grid">
+        @for (favorite of filteredFavorites(); track favorite.id) {
+        <article class="favorite-card">
+            <a [routerLink]="['/catalog', favorite.movie.id]" class="poster-link">
+            <img [src]="favorite.movie.poster || fallbackPoster" [alt]="favorite.movie.title" />
+            </a>
+            <div class="card-content">
+            <div>
+                <h2>{{ favorite.movie.title }}</h2>
+                <p>Добавлено {{ favorite.added_at | date: 'mediumDate' }}</p>
+            </div>
+            <div class="card-actions">
+                <a [routerLink]="['/catalog', favorite.movie.id]" class="secondary-link">Открыть</a>
+                <button type="button" class="remove-button" (click)="removeFavorite(favorite.movie.id)">
+                Удалить
+                </button>
+            </div>
+            </div>
+        </article>
+        } @empty {
+        <section class="state-card">В избранном пока пусто.</section>
+        }
+    </section>
+    }
+</section>

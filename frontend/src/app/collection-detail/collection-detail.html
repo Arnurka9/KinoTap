@@ -1,0 +1,50 @@
+<section class="collection-page">
+    <a routerLink="/catalog" class="back-link">Назад к каталогу</a>
+
+    @if (collection(); as currentCollection) {
+    <section class="collection-hero" [style.borderLeft]="'5px solid ' + accentColor()">
+        <div class="collection-copy">
+        <p class="eyebrow">Коллекция</p>
+        <h1>{{ currentCollection.title }}</h1>
+        <p>{{ currentCollection.description }}</p>
+
+        <div class="collection-stats">
+            <span>{{ currentCollection.movies.length }} фильмов</span>
+            <span [style.color]="accentColor()">Акцент подборки</span>
+        </div>
+
+        <div class="collection-actions">
+            <a routerLink="/catalog" class="secondary-button">В каталог</a>
+            <a routerLink="/" class="primary-button">На главную</a>
+        </div>
+        </div>
+
+        <div class="poster-stack">
+        @for (movie of previewMovies(); track movie.id) {
+            <a [routerLink]="['/catalog', movie.id]" class="poster-card">
+            <img [src]="movie.poster || fallbackPoster" [alt]="movie.title" />
+            <strong>{{ movie.title }}</strong>
+            </a>
+        }
+        </div>
+    </section>
+
+    <section class="movie-grid">
+        @for (movie of currentCollection.movies; track movie.id) {
+        <a [routerLink]="['/catalog', movie.id]" class="movie-card">
+            <img [src]="movie.poster || fallbackPoster" [alt]="movie.title" />
+            <div>
+            <strong>{{ movie.title }}</strong>
+            <p>Открыть карточку фильма</p>
+            </div>
+        </a>
+        } @empty {
+        <section class="state-card">В этой коллекции пока нет фильмов.</section>
+        }
+    </section>
+    } @else if (isLoading()) {
+    <section class="state-card">Загрузка коллекции...</section>
+    } @else {
+    <section class="state-card error-card">{{ errorMessage() }}</section>
+    }
+</section>

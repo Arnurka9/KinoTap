@@ -11,7 +11,7 @@ class MovieListAPIView(generics.ListAPIView):
         filters = MovieFilterSerializer(data=self.request.query_params)
         filters.is_valid(raise_exception=True)
 
-        queryset = Movie.objects.all().annotate(
+        queryset = Movie.objects.select_related('genre').annotate(
             reviews_count=Count('reviews', distinct=True)
         )
 
@@ -19,10 +19,12 @@ class MovieListAPIView(generics.ListAPIView):
         genre = filters.validated_data.get('genre', '').strip()
 
         if search:
-            queryset = queryset.filter(Q(title__icontains=search) | Q(genre__icontains=search))
+            queryset = queryset.filter(
+                Q(title__icontains=search) | Q(genre__name__icontains=search)
+            )
 
         if genre:
-            queryset = queryset.filter(genre__icontains=genre)
+            queryset = queryset.filter(genre__name__icontains=genre)
 
         if self.request.user.is_authenticated:
             queryset = queryset.annotate(
@@ -45,7 +47,7 @@ class MovieDetailAPIView(generics.RetrieveAPIView):
     serializer_class = MovieSerializer
 
     def get_queryset(self):
-        queryset = Movie.objects.all().annotate(
+        queryset = Movie.objects.select_related('genre').annotate(
             reviews_count=Count('reviews', distinct=True)
         )
 
