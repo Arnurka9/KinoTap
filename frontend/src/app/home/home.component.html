@@ -1,0 +1,138 @@
+<section class="home-page">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Онлайн-кинотеатр</p>
+      <h1>Главная витрина фильмов, жанров и коллекций.</h1>
+      <p>
+        Страница собрана по design reference и требованиям проекта: навигация,
+        каталог, избранное, авторизация и живые данные с Django API.
+      </p>
+
+      <div class="hero-actions">
+        <a routerLink="/catalog" class="hero-button hero-button-primary">Открыть каталог</a>
+        <a routerLink="/favorites" class="hero-button hero-button-secondary">Перейти в избранное</a>
+      </div>
+    </div>
+
+    @if (heroMovie(); as movie) {
+      <a [routerLink]="['/catalog', movie.id]" class="hero-preview">
+        <img [src]="movie.poster || fallbackPoster" [alt]="movie.title" class="hero-poster" />
+
+        <div class="hero-preview-meta">
+          <span class="badge">{{ movie.genre }}</span>
+          <strong>{{ movie.title }}</strong>
+          <p>{{ movie.description }}</p>
+
+          <div class="hero-preview-stats">
+            <span>{{ movie.rating | number: '1.1-1' }} рейтинг</span>
+            <span>{{ movie.reviews_count }} отзывов</span>
+          </div>
+        </div>
+      </a>
+    } @else {
+      <div class="hero-preview empty-preview">Загрузка каталога...</div>
+    }
+  </section>
+
+  @if (errorMessage()) {
+    <section class="state-card error-card">{{ errorMessage() }}</section>
+  }
+
+  @if (isLoading()) {
+    <section class="state-card">Загружаем фильмы...</section>
+  } @else {
+    <section class="section-block">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Сейчас в подборке</p>
+          <h2>Новое и заметное</h2>
+        </div>
+        <span>{{ featuredMovies().length }} карточек</span>
+      </div>
+
+      <div class="featured-strip">
+        @for (movie of featuredMovies(); track movie.id) {
+          <a [routerLink]="['/catalog', movie.id]" class="featured-card">
+            <img [src]="movie.poster || fallbackPoster" [alt]="movie.title" />
+
+            <div class="feature-overlay">
+              <strong>{{ movie.title }}</strong>
+              <p>{{ movie.genre }}</p>
+            </div>
+          </a>
+        }
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Жанры</p>
+          <h2>Подборка по настроению</h2>
+        </div>
+        <span>От главной до каталога</span>
+      </div>
+
+      <div class="genre-grid">
+        @for (genre of genreCards(); track genre.genre) {
+          <a
+            [routerLink]="['/catalog']"
+            [queryParams]="{ genre: genre.genre }"
+            class="genre-card"
+          >
+            <div>
+              <strong>{{ genre.genre }}</strong>
+              <span>{{ genre.count }} фильмов</span>
+            </div>
+
+            <div class="genre-stack">
+              @for (movie of genre.preview; track movie.id) {
+                <img [src]="movie.poster || fallbackPoster" [alt]="movie.title" />
+              }
+            </div>
+          </a>
+        }
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Подборки</p>
+          <h2>Ленты с разным настроением</h2>
+        </div>
+        <span>Быстрый старт для просмотра</span>
+      </div>
+
+      @if (collectionsLoading()) {
+        <section class="state-card">Загружаем коллекции...</section>
+      } @else if (collectionsError()) {
+        <section class="state-card error-card">{{ collectionsError() }}</section>
+      } @else if (!collections().length) {
+        <section class="state-card">Коллекции пока не добавлены.</section>
+      } @else {
+        <div class="collection-grid">
+          @for (collection of collections(); track collection.id) {
+            <a
+                [routerLink]="['/collections', collection.id]"
+              class="collection-card"
+                [style.borderLeft]="'4px solid ' + collectionAccent(collection.accent)"
+            >
+              <div class="collection-copy">
+                <span class="badge">Коллекция</span>
+                <strong>{{ collection.title }}</strong>
+                <p>{{ collection.description }}</p>
+              </div>
+
+              <div class="collection-media">
+                @for (movie of collection.movies; track movie.id) {
+                  <img [src]="movie.poster || fallbackPoster" [alt]="movie.title" />
+                }
+              </div>
+            </a>
+          }
+        </div>
+      }
+    </section>
+  }
+</section>

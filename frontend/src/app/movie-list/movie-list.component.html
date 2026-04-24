@@ -1,0 +1,103 @@
+<section class="catalog-page">
+  <header class="page-head">
+    <div class="page-copy">
+      <p class="eyebrow">Каталог</p>
+      <h1>Жанры и фильмы</h1>
+      <p>
+        Выбирай жанр по карточке или ищи фильм по названию. Карточки ведут к
+        детальной странице и избранному.
+      </p>
+    </div>
+
+    <div class="filters">
+      <label class="field">
+        <span>Поиск по каталогу</span>
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="scheduleSearch()"
+          placeholder="Название фильма или жанр"
+        />
+      </label>
+
+      <button type="button" class="reset-button" (click)="clearFilters()">
+        Сбросить
+      </button>
+    </div>
+  </header>
+
+  @if (overviewLoading()) {
+    <section class="state-card">Загрузка жанров...</section>
+  } @else if (overviewError()) {
+    <section class="state-card error-card">{{ overviewError() }}</section>
+  } @else {
+    <section class="genre-section">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Жанры</p>
+          <h2>Карточки с другим видом</h2>
+        </div>
+        <span>{{ genres().length }} категорий</span>
+      </div>
+
+      <div class="genre-grid">
+        @for (genre of genreCards(); track genre.genre) {
+          <a
+            [routerLink]="['/catalog']"
+            [queryParams]="genreQueryParams(genre.genre)"
+            class="genre-card"
+            [class.genre-card-active]="selectedGenre === genre.genre"
+          >
+            <div>
+              <strong>{{ genre.genre }}</strong>
+              <span>{{ genre.count }} фильмов</span>
+            </div>
+
+            <div class="genre-preview">
+              @for (movie of genre.preview; track movie.id) {
+                <img [src]="movie.poster || fallbackPoster" [alt]="movie.title" />
+              }
+            </div>
+          </a>
+        }
+      </div>
+    </section>
+  }
+
+  @if (catalogLoading()) {
+    <section class="state-card">Загрузка каталога...</section>
+  } @else if (catalogError()) {
+    <section class="state-card error-card">{{ catalogError() }}</section>
+  } @else {
+    <section class="movie-section">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Подборка</p>
+          <h2>Фильмы каталога</h2>
+        </div>
+        <span>{{ movies().length }} результатов</span>
+      </div>
+
+      <div class="movie-grid">
+        @for (movie of movies(); track movie.id) {
+          <a [routerLink]="['/catalog', movie.id]" class="movie-card">
+            <div class="movie-poster">
+              <img [src]="movie.poster || fallbackPoster" [alt]="movie.title" />
+            </div>
+
+            <div class="movie-meta">
+              <h3>{{ movie.title }}</h3>
+              <p>{{ movie.genre }}</p>
+              <div class="movie-stats">
+                <span>Рейтинг {{ movie.rating | number: '1.1-1' }}</span>
+                <span>{{ movie.reviews_count }} отзывов</span>
+              </div>
+            </div>
+          </a>
+        } @empty {
+          <section class="state-card">По вашему запросу фильмы не найдены.</section>
+        }
+      </div>
+    </section>
+  }
+</section>
