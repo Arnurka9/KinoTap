@@ -1,0 +1,1191 @@
+{
+  "info": {
+    "_postman_id": "a0c08560-1680-4639-8804-b847bde8a5db",
+    "name": "My Collection",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53749496",
+    "_collection_link": "https://go.postman.co/collection/53749496-a0c08560-1680-4639-8804-b847bde8a5db?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "KinoTap",
+      "item": [
+        {
+          "name": "auth",
+          "item": [
+            {
+              "name": "api/refresh/",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3NzY4NTMzNCwiaWF0IjoxNzc3MDgwNTM0LCJqdGkiOiJmNGE2YTZjZjc5ZGU0NjdhYWVlMTgzYWM5ZmFkNDNiMyIsInVzZXJfaWQiOiI0In0.IgCB9oovvVFaMXyKZsCTX8KJEGwoxf_Byqx5KhpIWC8\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/refresh/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "refresh",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "api/login/",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"username\": \"angular\",\r\n  \"email\": \"angular@test.com\",\r\n  \"password\": \"abcdefgh\",\r\n  \"confirm_password\": \"abcdefgh\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/login/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "login",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "api/register",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"username\": \"angular\",\r\n  \"email\": \"angular@test.com\",\r\n  \"password\": \"abcdefgh\",\r\n  \"confirm_password\": \"abcdefgh\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/register/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "register",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "api/logout/",
+              "protocolProfileBehavior": {
+                "disabledSystemHeaders": {}
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MDgzMjQ4LCJpYXQiOjE3NzcwODE0NDgsImp0aSI6IjQyMGFmZmQ5YWE5NzQxMzdiOGViY2FmNGQzNWQyYWQ0IiwidXNlcl9pZCI6IjQifQ.Cl3Hnt0sgXV4hpXhQPbMwtrRDWBvFPKQqSXWS9LPEaE",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3NzY4NTMzNCwiaWF0IjoxNzc3MDgwNTM0LCJqdGkiOiJmNGE2YTZjZjc5ZGU0NjdhYWVlMTgzYWM5ZmFkNDNiMyIsInVzZXJfaWQiOiI0In0.IgCB9oovvVFaMXyKZsCTX8KJEGwoxf_Byqx5KhpIWC8\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/logout/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "logout",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Movies",
+          "item": [
+            {
+              "name": "api/movies/",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/movies/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "movies",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "search movie",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/movies/?search=Би",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "movies",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "Би"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "movie genre",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/movies/?genre=Ужасы",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "movies",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "key": "genre",
+                      "value": "Ужасы"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "movie id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/movies/33/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "movies",
+                    "33",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Reviews",
+          "item": [
+            {
+              "name": "view reviews by id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/movies/33/reviews/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "movies",
+                    "33",
+                    "reviews",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "add review by id",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MDk0ODk0LCJpYXQiOjE3NzcwOTMwOTQsImp0aSI6ImE4YmY0MWMyMTdmZTRhNGFiMGY1ZmU1OGE3OTc5Y2FiIiwidXNlcl9pZCI6IjQifQ.F0PpG5WiCzJvIVHZgm07UpiEh5V7MG_lpf7VbgmVKGI",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"text\":\"Ужасный фильм\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/movies/33/reviews/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "movies",
+                    "33",
+                    "reviews",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Favorites",
+          "item": [
+            {
+              "name": "get favorites",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MDk0ODk0LCJpYXQiOjE3NzcwOTMwOTQsImp0aSI6ImE4YmY0MWMyMTdmZTRhNGFiMGY1ZmU1OGE3OTc5Y2FiIiwidXNlcl9pZCI6IjQifQ.F0PpG5WiCzJvIVHZgm07UpiEh5V7MG_lpf7VbgmVKGI",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/favorites/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "favorites",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "add favorites",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MDk0ODk0LCJpYXQiOjE3NzcwOTMwOTQsImp0aSI6ImE4YmY0MWMyMTdmZTRhNGFiMGY1ZmU1OGE3OTc5Y2FiIiwidXNlcl9pZCI6IjQifQ.F0PpG5WiCzJvIVHZgm07UpiEh5V7MG_lpf7VbgmVKGI",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/favorites/toggle/32/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "favorites",
+                    "toggle",
+                    "32",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Collections generics",
+          "item": [
+            {
+              "name": "collections via generics",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "add collections",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MTAzNTM3LCJpYXQiOjE3NzcxMDE3MzcsImp0aSI6IjYyYmU1OWJhNmM0YTQyM2VhMWY4NDI2MWYzZDJmYjgwIiwidXNlcl9pZCI6IjQifQ.YWeTC0rUL9XHSXJBhlFPT4IVr_VSidvnfnstyJf1Ucc",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Ночной марафон\",\r\n  \"description\": \"Подборка фильмов для позднего вечернего просмотра.\",\r\n  \"accent\": \"crimson\",\r\n  \"movie_ids\": [33, 34, 35]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get collection by id",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MDk3ODE0LCJpYXQiOjE3NzcwOTYwMTQsImp0aSI6ImIyZjVkNDFhZGExYjRkNDdhZGQ1MmU2M2QwZGUwMWM4IiwidXNlcl9pZCI6IjQifQ.1Icqqlobt1ClYMqIb-naknbV9YD0DoRS-eBI3TGZ72A",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Ночной марафон\",\r\n  \"description\": \"Подборка фильмов для позднего вечернего просмотра.\",\r\n  \"accent\": \"crimson\",\r\n  \"movie_ids\": [33, 34, 35]\r\n}"
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections/4/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections",
+                    "4",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "replacement of one collection",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MDk3ODE0LCJpYXQiOjE3NzcwOTYwMTQsImp0aSI6ImIyZjVkNDFhZGExYjRkNDdhZGQ1MmU2M2QwZGUwMWM4IiwidXNlcl9pZCI6IjQifQ.1Icqqlobt1ClYMqIb-naknbV9YD0DoRS-eBI3TGZ72A",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Updated collection\",\r\n  \"description\": \"New description\",\r\n  \"accent\": \"teal\",\r\n  \"movie_ids\": [20, 24, 23]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections/7/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections",
+                    "7",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "partially change the collection",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MDk3ODE0LCJpYXQiOjE3NzcwOTYwMTQsImp0aSI6ImIyZjVkNDFhZGExYjRkNDdhZGQ1MmU2M2QwZGUwMWM4IiwidXNlcl9pZCI6IjQifQ.1Icqqlobt1ClYMqIb-naknbV9YD0DoRS-eBI3TGZ72A",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"New title\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections/7/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections",
+                    "7",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete collection",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MDk3ODE0LCJpYXQiOjE3NzcwOTYwMTQsImp0aSI6ImIyZjVkNDFhZGExYjRkNDdhZGQ1MmU2M2QwZGUwMWM4IiwidXNlcl9pZCI6IjQifQ.1Icqqlobt1ClYMqIb-naknbV9YD0DoRS-eBI3TGZ72A",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections/7/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections",
+                    "7",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Collections mixins",
+          "item": [
+            {
+              "name": "collections via mixins",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-mixins/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-mixins",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "add collections",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MTAzNTM3LCJpYXQiOjE3NzcxMDE3MzcsImp0aSI6IjYyYmU1OWJhNmM0YTQyM2VhMWY4NDI2MWYzZDJmYjgwIiwidXNlcl9pZCI6IjQifQ.YWeTC0rUL9XHSXJBhlFPT4IVr_VSidvnfnstyJf1Ucc",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Ночной марафон\",\r\n  \"description\": \"Подборка фильмов для позднего вечернего просмотра.\",\r\n  \"accent\": \"crimson\",\r\n  \"movie_ids\": [33, 34, 35]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-mixins/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-mixins",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "replacement of one collection",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MTAzNTM3LCJpYXQiOjE3NzcxMDE3MzcsImp0aSI6IjYyYmU1OWJhNmM0YTQyM2VhMWY4NDI2MWYzZDJmYjgwIiwidXNlcl9pZCI6IjQifQ.YWeTC0rUL9XHSXJBhlFPT4IVr_VSidvnfnstyJf1Ucc",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Updated collection\",\r\n  \"description\": \"New description\",\r\n  \"accent\": \"teal\",\r\n  \"movie_ids\": [20, 24, 23]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-mixins/9/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-mixins",
+                    "9",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "partially change the collection",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MTA0Mjg1LCJpYXQiOjE3NzcxMDI0ODUsImp0aSI6IjJiMDc2NWEwNTY2ZDQ5ZDk5ZTBmYzIzYzY5NTJlMjk0IiwidXNlcl9pZCI6IjQifQ.ukEOLvy-B0RSB9juuBOmm08FBn7_XRCfPZfLVzJ4Rlo",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"New title\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-mixins/9/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-mixins",
+                    "9",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete collection",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MTA0Mjg1LCJpYXQiOjE3NzcxMDI0ODUsImp0aSI6IjJiMDc2NWEwNTY2ZDQ5ZDk5ZTBmYzIzYzY5NTJlMjk0IiwidXNlcl9pZCI6IjQifQ.ukEOLvy-B0RSB9juuBOmm08FBn7_XRCfPZfLVzJ4Rlo",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-mixins/9/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-mixins",
+                    "9",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Collections fbv",
+          "item": [
+            {
+              "name": "collections via fbv",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-fbv/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-fbv",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "add collections",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MTA1Mjk0LCJpYXQiOjE3NzcxMDM0OTQsImp0aSI6ImZhYjM5N2E0YTY2MzRkODBiOTRkZGQwOTRlYzU2ZTc3IiwidXNlcl9pZCI6IjQifQ.1-ZgKP1UI9tAOtrPHknjQjBzD-M-e_ZZEJ15w_kuZQo",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Ночной марафон\",\r\n  \"description\": \"Подборка фильмов для позднего вечернего просмотра.\",\r\n  \"accent\": \"crimson\",\r\n  \"movie_ids\": [33, 34, 35]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-fbv/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-fbv",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "replacement of one collection",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MTA1Mjk0LCJpYXQiOjE3NzcxMDM0OTQsImp0aSI6ImZhYjM5N2E0YTY2MzRkODBiOTRkZGQwOTRlYzU2ZTc3IiwidXNlcl9pZCI6IjQifQ.1-ZgKP1UI9tAOtrPHknjQjBzD-M-e_ZZEJ15w_kuZQo",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Updated collection\",\r\n  \"description\": \"New description\",\r\n  \"accent\": \"teal\",\r\n  \"movie_ids\": [20, 24, 23]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-fbv/10/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-fbv",
+                    "10",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "partially change the collection",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MTA1Mjk0LCJpYXQiOjE3NzcxMDM0OTQsImp0aSI6ImZhYjM5N2E0YTY2MzRkODBiOTRkZGQwOTRlYzU2ZTc3IiwidXNlcl9pZCI6IjQifQ.1-ZgKP1UI9tAOtrPHknjQjBzD-M-e_ZZEJ15w_kuZQo",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"New title\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-fbv/10/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-fbv",
+                    "10",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete collection",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MTA1Mjk0LCJpYXQiOjE3NzcxMDM0OTQsImp0aSI6ImZhYjM5N2E0YTY2MzRkODBiOTRkZGQwOTRlYzU2ZTc3IiwidXNlcl9pZCI6IjQifQ.1-ZgKP1UI9tAOtrPHknjQjBzD-M-e_ZZEJ15w_kuZQo",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-fbv/10/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-fbv",
+                    "10",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Collections cbv",
+          "item": [
+            {
+              "name": "collections via cbv",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-cbv/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-cbv",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "add collections",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MTA1Mjk0LCJpYXQiOjE3NzcxMDM0OTQsImp0aSI6ImZhYjM5N2E0YTY2MzRkODBiOTRkZGQwOTRlYzU2ZTc3IiwidXNlcl9pZCI6IjQifQ.1-ZgKP1UI9tAOtrPHknjQjBzD-M-e_ZZEJ15w_kuZQo",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Ночной марафон\",\r\n  \"description\": \"Подборка фильмов для позднего вечернего просмотра.\",\r\n  \"accent\": \"crimson\",\r\n  \"movie_ids\": [33, 34, 35]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-cbv/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-cbv",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "replacement of one collection",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MTA1Mjk0LCJpYXQiOjE3NzcxMDM0OTQsImp0aSI6ImZhYjM5N2E0YTY2MzRkODBiOTRkZGQwOTRlYzU2ZTc3IiwidXNlcl9pZCI6IjQifQ.1-ZgKP1UI9tAOtrPHknjQjBzD-M-e_ZZEJ15w_kuZQo",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"Updated collection\",\r\n  \"description\": \"New description\",\r\n  \"accent\": \"teal\",\r\n  \"movie_ids\": [20, 24, 23]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-cbv/10/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-cbv",
+                    "10",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "partially change the collection",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MTA1Mjk0LCJpYXQiOjE3NzcxMDM0OTQsImp0aSI6ImZhYjM5N2E0YTY2MzRkODBiOTRkZGQwOTRlYzU2ZTc3IiwidXNlcl9pZCI6IjQifQ.1-ZgKP1UI9tAOtrPHknjQjBzD-M-e_ZZEJ15w_kuZQo",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"title\": \"New title\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-cbv/10/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-cbv",
+                    "10",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete collection",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc3MTA1Mjk0LCJpYXQiOjE3NzcxMDM0OTQsImp0aSI6ImZhYjM5N2E0YTY2MzRkODBiOTRkZGQwOTRlYzU2ZTc3IiwidXNlcl9pZCI6IjQifQ.1-ZgKP1UI9tAOtrPHknjQjBzD-M-e_ZZEJ15w_kuZQo",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/collections-cbv/10/",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "collections-cbv",
+                    "10",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
