@@ -1,0 +1,70 @@
+<section class="register-page">
+      <section class="register-intro">
+        <p class="eyebrow">Регистрация</p>
+        <h1>Создание аккаунта в KinoTap</h1>
+        <p>
+          Зарегистрируйся, и система отправит письмо на указанную почту через SMTP.
+          После этого можно войти в каталог, собирать избранное и оставлять отзывы.
+        </p>
+
+        <div class="intro-links">
+          <a routerLink="/login" class="back-link">Уже есть аккаунт? Войти</a>
+          <a routerLink="/catalog" class="back-link">Вернуться в каталог</a>
+        </div>
+      </section>
+
+    <form class="register-card" (ngSubmit)="submit()">
+        <label class="field">
+          <span>Логин</span>
+          <input
+            type="text"
+            name="username"
+            [(ngModel)]="username"
+            autocomplete="username"
+            placeholder="Придумай логин"
+            required/>
+        </label>
+
+        <label class="field">
+          <span>Почта</span>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            autocomplete="email"
+            placeholder="name@example.com"
+            required/>
+        </label>
+
+        <label class="field">
+          <span>Пароль</span>
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            autocomplete="new-password"
+            placeholder="Минимум 8 символов"
+            required/>
+        </label>
+
+        <label class="field">
+          <span>Повтор пароля</span>
+          <input
+            type="password"
+            name="confirmPassword"
+            [(ngModel)]="confirmPassword"
+            autocomplete="new-password"
+            placeholder="Повтори пароль"
+            required/>
+        </label>
+
+        <button type="submit" class="submit-button" [disabled]="isSubmitting()">
+          {{ isSubmitting() ? 'Создаём аккаунт...' : 'Создать аккаунт' }}
+        </button>
+
+        @if (errorMessage()) {
+          <p class="feedback error">{{ errorMessage() }}</p>
+        }
+    </form>
+</section>
+  
