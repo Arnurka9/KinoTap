@@ -14,7 +14,7 @@ django.setup()
 
 from django.contrib.auth import get_user_model
 
-from api.models import Collection, Favorite, Movie, Review
+from api.models import Collection, Favorite, Genre, Movie, Review
 
 GENRE_COLORS = {
     'Комедии': 'f59e0b',
@@ -63,13 +63,13 @@ MOVIES = [
         'description': 'Журналист находит следы исчезновения, которые ведут к нему самому.',
     },
     {
-        'title': 'Письмо из бухты',
+        'title': 'Письмо из будущего',
         'genre': 'Приключения',
         'rating': 7.9,
         'description': 'Двое друзей отправляются на край карты ради одной старой подсказки.',
     },
     {
-        'title': 'Смешной этаж',
+        'title': 'Седьмой этаж',
         'genre': 'Комедии',
         'rating': 7.8,
         'description': 'Жильцы дома превращают обычный переезд в непрерывный праздник абсурда.',
@@ -87,16 +87,16 @@ MOVIES = [
         'description': 'Смотритель маяка замечает повторяющиеся детали в исчезновениях рыбаков.',
     },
     {
-        'title': 'Зимний коридор',
-        'genre': 'Ужасы',
+        'title': 'Зимний дворец',
+        'genre': 'Мелодрамы',
         'rating': 7.5,
-        'description': 'Заброшенный корпус колледжа каждый вечер меняет планировку.',
+        'description': 'Чтобы преодолеть писательский блок Эмили отправляется в пустое зимнее шале. Неожиданно туда же приезжает владеющий этим местом принц, и теперь писательница должна работать не только над книгой, но и исполнять приказы королевской особы и его свиты.',
     },
     {
-        'title': 'Дом, где свет не гаснет',
-        'genre': 'Семейное',
+        'title': 'И гаснет свет...',
+        'genre': 'Ужасы',
         'rating': 8.2,
-        'description': 'Тёплая история о доме, который меняет судьбы тех, кто в него заходит.',
+        'description': '«И гаснет свет…» (англ. Lights Out) — американский фильм ужасов, основанный на одноименном короткометражном фильме 2013 года. Режиссёр — Дэвид Ф. Сандберг, автор сценария — Эрик Хайссерер. В главных ролях — Тереза Палмер и Гэбриел Бейтман.',
     },
     {
         'title': 'Сцена после дождя',
@@ -105,7 +105,7 @@ MOVIES = [
         'description': 'Две судьбы снова пересекаются в городе, где дождь не прекращается неделями.',
     },
     {
-        'title': 'Кадр на вырост',
+        'title': 'Пальто на вырост',
         'genre': 'Мультфильмы',
         'rating': 8.7,
         'description': 'Юный изобретатель учится собирать мир заново из цветных деталей.',
@@ -117,19 +117,19 @@ MOVIES = [
         'description': 'Летописец восстанавливает события, которые пытались стереть из памяти города.',
     },
     {
-        'title': 'Живая биография',
+        'title': 'Биография Эпштейна',
         'genre': 'Биографии',
         'rating': 8.0,
         'description': 'Портрет человека, который сделал из сомнений собственную профессию.',
     },
     {
-        'title': 'Сухой фронт',
+        'title': 'Западный фронт',
         'genre': 'Военное',
         'rating': 7.8,
         'description': 'История отряда, который держит линию не только на карте, но и в себе.',
     },
     {
-        'title': 'Белый шум двора',
+        'title': 'Белый шум',
         'genre': 'Артхаус',
         'rating': 7.4,
         'description': 'Наблюдение за городским двором, где каждый звук становится отдельной сценой.',
@@ -159,27 +159,27 @@ COLLECTIONS = [
         'title': 'Для вечернего просмотра',
         'description': 'Спокойные истории для вечера без спешки.',
         'accent': 'amber',
-        'movies': ['Смешной этаж', 'Тихий дом', 'Сцена после дождя'],
+        'movies': ['Седьмой этаж', 'Тихий дом', 'Сцена после дождя'],
     },
     {
         'title': 'Экшен и драйв',
         'description': 'Сильные эмоции, движение и напряжение до последней минуты.',
         'accent': 'crimson',
-        'movies': ['Ночной маршрут', 'Погоня за тенью', 'Письмо из бухты'],
+        'movies': ['Ночной маршрут', 'Погоня за тенью', 'Письмо из будущего'],
     },
     {
         'title': 'Семейный выбор',
         'description': 'Лёгкая подборка для совместного просмотра.',
         'accent': 'teal',
-        'movies': ['Дом, где свет не гаснет', 'Кадр на вырост', 'Небесный сад'],
+        'movies': ['И гаснет свет...', 'Пальто на вырост', 'Небесный сад'],
     },
 ]
 
 FAVORITES = [
     'Ночной маршрут',
     'Сигнал из будущего',
-    'Дом, где свет не гаснет',
-    'Кадр на вырост',
+    'И гаснет свет...',
+    'Пальто на вырост',
 ]
 
 REVIEWS = [
@@ -192,7 +192,7 @@ REVIEWS = [
         'text': 'Сильная фантастическая идея, которая отлично работает как карточка в каталоге.',
     },
     {
-        'movie': 'Дом, где свет не гаснет',
+        'movie': 'И гаснет свет...',
         'text': 'Тёплая семейная история, которая хорошо смотрится в подборках.',
     },
 ]
@@ -202,23 +202,58 @@ def build_poster(title: str, accent: str) -> str:
     return f"https://placehold.co/600x900/{accent}/ffffff?text={quote_plus(title)}"
 
 
-def seed_movies() -> dict[str, Movie]:
+def seed_demo_user():
+    user_model = get_user_model()
+    demo_user, _ = user_model.objects.get_or_create(username='demo')
+    demo_user.email = 'demo@kinotap.local'
+    demo_user.set_password('demo1234')
+    demo_user.save(update_fields=['email', 'password'])
+    return demo_user
+
+
+def seed_movies(created_by) -> dict[str, Movie]:
     movie_lookup: dict[str, Movie] = {}
 
     for item in MOVIES:
         color = GENRE_COLORS.get(item['genre'], '111827')
+        genre, _ = Genre.objects.get_or_create(name=item['genre'])
         movie, _ = Movie.objects.update_or_create(
             title=item['title'],
             defaults={
                 'description': item['description'],
                 'poster': build_poster(item['title'], color),
-                'genre': item['genre'],
+                'genre': genre,
                 'rating': item['rating'],
+                'created_by': created_by,
             },
         )
         movie_lookup[movie.title] = movie
 
     return movie_lookup
+
+
+def ensure_titles_exist(movie_lookup: dict[str, Movie]) -> None:
+    missing_titles: list[str] = []
+
+    for collection in COLLECTIONS:
+        for title in collection['movies']:
+            if title not in movie_lookup:
+                missing_titles.append(title)
+
+    for title in FAVORITES:
+        if title not in movie_lookup:
+            missing_titles.append(title)
+
+    for review in REVIEWS:
+        if review['movie'] not in movie_lookup:
+            missing_titles.append(review['movie'])
+
+    if missing_titles:
+        unique_titles = ', '.join(sorted(set(missing_titles)))
+        raise ValueError(
+            'These titles are referenced in COLLECTIONS/FAVORITES/REVIEWS but missing from MOVIES: '
+            f'{unique_titles}'
+        )
 
 
 def seed_collections(movie_lookup: dict[str, Movie]) -> None:
@@ -233,13 +268,7 @@ def seed_collections(movie_lookup: dict[str, Movie]) -> None:
         collection.movies.set([movie_lookup[title] for title in item['movies'] if title in movie_lookup])
 
 
-def seed_demo_user(movie_lookup: dict[str, Movie]) -> None:
-    user_model = get_user_model()
-    demo_user, _ = user_model.objects.get_or_create(username='demo')
-    demo_user.email = 'demo@kinotap.local'
-    demo_user.set_password('demo1234')
-    demo_user.save(update_fields=['email', 'password'])
-
+def seed_demo_user_activity(demo_user, movie_lookup: dict[str, Movie]) -> None:
     Favorite.objects.filter(user=demo_user).delete()
     Review.objects.filter(user=demo_user).delete()
 
@@ -251,12 +280,15 @@ def seed_demo_user(movie_lookup: dict[str, Movie]) -> None:
 
 
 def main() -> None:
-    movie_lookup = seed_movies()
+    demo_user = seed_demo_user()
+    movie_lookup = seed_movies(demo_user)
+    ensure_titles_exist(movie_lookup)
     seed_collections(movie_lookup)
-    seed_demo_user(movie_lookup)
+    seed_demo_user_activity(demo_user, movie_lookup)
 
     print(
         'Seed complete: '
+        f"{Genre.objects.count()} genres, "
         f"{Movie.objects.count()} movies, "
         f"{Collection.objects.count()} collections, "
         f"{Favorite.objects.count()} favorites, "

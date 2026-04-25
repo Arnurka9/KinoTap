@@ -13,6 +13,7 @@ class Movie(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     poster = models.URLField(blank=True, null=True)
+    poster_image = models.FileField(upload_to='movie_posters/', blank=True, null=True)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, related_name='movies')
     rating = models.DecimalField(max_digits=3, decimal_places=1, default=0)
     created_by = models.ForeignKey(

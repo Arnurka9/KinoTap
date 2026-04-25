@@ -5,6 +5,17 @@ from .models import Collection, Favorite, Movie, Review
 User = get_user_model()
 
 class MovieMiniSerializer(serializers.ModelSerializer):
+    poster = serializers.SerializerMethodField()
+
+    def get_poster(self, obj):
+        request = self.context.get('request')
+
+        if obj.poster_image:
+            poster_url = obj.poster_image.url
+            return request.build_absolute_uri(poster_url) if request else poster_url
+
+        return obj.poster
+
     class Meta:
         model = Movie
         fields = ['id', 'title', 'poster']
@@ -78,9 +89,19 @@ class FavoriteToggleResponseSerializer(serializers.Serializer):
 
 
 class MovieSerializer(serializers.ModelSerializer):
+    poster = serializers.SerializerMethodField()
     genre = serializers.CharField(source='genre.name', read_only=True)
     reviews_count = serializers.IntegerField(read_only=True)
     is_favorite = serializers.BooleanField(read_only=True)
+
+    def get_poster(self, obj):
+        request = self.context.get('request')
+
+        if obj.poster_image:
+            poster_url = obj.poster_image.url
+            return request.build_absolute_uri(poster_url) if request else poster_url
+
+        return obj.poster
 
     class Meta:
         model = Movie
