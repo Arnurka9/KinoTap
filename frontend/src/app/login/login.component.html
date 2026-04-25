@@ -1,0 +1,53 @@
+<section class="login-page">
+      <section class="login-intro">
+        <p class="eyebrow">Авторизация</p>
+        <h1>Вход в KinoTap</h1>
+        <p>
+          Для демо-проверки используйте аккаунт <strong>demo / demo1234</strong>.
+          После входа можно открыть избранное и оставить отзыв.
+        </p>
+
+        @if (successMessage()) {
+          <p class="feedback success">{{ successMessage() }}</p>
+        }
+
+        <div class="intro-links">
+          <a routerLink="/catalog" class="back-link">Вернуться в каталог</a>
+          <a routerLink="/register" class="back-link">Нет аккаунта? Зарегистрироваться</a>
+        </div>
+      </section>
+
+      <form class="login-card" (ngSubmit)="submit()">
+        <label class="field">
+          <span>Логин</span>
+          <input
+            type="text"
+            name="username"
+            [(ngModel)]="username"
+            autocomplete="username"
+            placeholder="Введите логин"
+            required
+          />
+        </label>
+
+        <label class="field">
+          <span>Пароль</span>
+          <input
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            autocomplete="current-password"
+            placeholder="Введите пароль"
+            required
+          />
+        </label>
+
+        <button type="submit" class="submit-button" [disabled]="isSubmitting()">
+          {{ isSubmitting() ? 'Входим...' : 'Войти' }}
+        </button>
+
+        @if (errorMessage()) {
+          <p class="feedback error">{{ errorMessage() }}</p>
+        }
+      </form>
+    </section>
